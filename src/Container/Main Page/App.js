@@ -4,19 +4,27 @@ import Route from "../../Router/Route";
 import { withRouter } from "react-router-dom";
 //Component
 import Layout from "../Layout/Layout";
+import LoginOrRegister from "../LoginOrRegister/LoginOrRegister";
 //redux
 import { useSelector } from "react-redux";
 //actions
 
 const App = props => {
 
-  // const isloading = useSelector(state => state.loading);
+  const login = useSelector(state => state.login);
 
   return (
     <div>
-      <Layout>
-        <Route />
-      </Layout>
+      {login.isLogin ?
+        <Layout>
+          <Route />
+        </Layout>
+        :
+        <LoginOrRegister>
+          <Route />
+        </LoginOrRegister>
+      }
+
     </div>
   );
 };
