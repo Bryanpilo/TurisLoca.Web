@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-// import { Row, Col, Container, Tabs, Tab } from 'react-bootstrap';
+import { Grid, Paper, makeStyles } from '@material-ui/core';
 //hoc
 import Aux from '../../Hoc/ContentWork';
-//Context
-// import AuthContext from '../../Context/Auth-Context'
 //Styling
 // import '../../Assets/css/site.css'
 import './Home.css'
@@ -21,13 +19,38 @@ const homePage = (props) => {
   //   dispatch(dashBoardActions.setAllValues());
   // }, []);
 
+  // const useStyles = makeStyles(theme => ({
+  //   paper: {
+  //     padding: 20,
+  //     marginTop: 10,
+  //     marginBottom: 10,
+  //     textAlign: 'center',
+  //     color: theme.palette.text.secondary,
+  //   },
+  // }));
+
+  const useStyles = {
+    paper: {
+      padding: 20,
+      marginTop: 10,
+      marginBottom: 10,
+      textAlign: 'center'
+    }
+  };
+
   var hour = new Date().getHours();
   const greeting = (hour < 12 ? "Buenos días, " : hour < 18 ? "Buenas tardes, " : "Buenas noches, ");
 
   return (
     <Aux>
-      <h1>My first app</h1>
-      <h2>{greeting}</h2>
+      <Grid container spacing={0}>
+        <Grid item sm={6}>
+          <Paper style={useStyles.paper}>Hola</Paper>
+        </Grid>
+        <Grid item sm={6}>
+          <Paper style={useStyles.paper}>{greeting}</Paper>
+        </Grid>
+      </Grid>
     </Aux>
   );
 

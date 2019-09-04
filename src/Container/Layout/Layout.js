@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
 // import "@babel/polyfill";
 //Services
 //Components
+import { Header, Footer } from '../../Component'
 //hoc
 import Aux from '../../Hoc/ContentWork';
 //Styling
@@ -14,9 +16,11 @@ const Layout = (props) => {
 
   return (
     <Aux>
-      <main>
-        {props.children}
-      </main>
+      <Header />
+        <main>
+          {props.children}
+        </main>
+      <Footer />
     </Aux>
   )
 }
