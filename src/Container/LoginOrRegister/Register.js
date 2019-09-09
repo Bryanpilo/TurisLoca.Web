@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Grid, Paper, makeStyles, TextField } from '@material-ui/core';
+import { Grid, Avatar, makeStyles, TextField, Button, Typography, FormControlLabel, Checkbox, Link } from '@material-ui/core';
 //hoc
 import Aux from '../../Hoc/ContentWork';
 //Styling
@@ -12,75 +12,113 @@ import Aux from '../../Hoc/ContentWork';
 
 const Register = (props) => {
 
-  // const dispatch = useDispatch();
-
-  const useStyles = makeStyles(theme => ({
-    container: {
+   // const dispatch = useDispatch();
+   const useStyles = makeStyles(theme => ({
+    root: {
+      height: '100vh',
+    },
+    image: {
+      backgroundImage: 'url(https://source.unsplash.com/random)',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    paper: {
+      margin: theme.spacing(8, 4),
       display: 'flex',
-      flexWrap: 'wrap',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 200,
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
     },
-    menu: {
-      width: 200,
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
     },
   }));
 
   const classes = useStyles();
 
   return (
-    <Aux>
-      <form className={classes.container} noValidate autoComplete="off">
+    <div className={classes.paper}>
+      <Typography component="h1" variant="h5">
+        Sign up
+      </Typography>
+      <form className={classes.form} noValidate>
         <TextField
-          id="standard-password-input"
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
           label="Password"
-          className={classes.textField}
           type="password"
+          id="password"
           autoComplete="current-password"
-          margin="normal"
         />
         <TextField
-          id="standard-password-input"
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          name="password"
           label="Password"
-          className={classes.textField}
           type="password"
+          id="password"
           autoComplete="current-password"
-          margin="normal"
-        />
-        {/* <TextField
-          id="standard-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-          InputProps={{
-            readOnly: true,
-          }}
-        /> */}
-        <TextField
-          id="standard-number"
-          label="Number"
-          // value={values.age}
-          // onChange={handleChange('age')}
-          type="number"
-          className={classes.textField}
-          // InputLabelProps={{
-          //   shrink: true,
-          // }}
-          margin="normal"
         />
         <TextField
-          id="standard-search"
-          label="Search field"
-          type="search"
-          className={classes.textField}
+          variant="outlined"
           margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
         />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Sign Up
+        </Button>
+        <Grid
+         container
+         direction="row-reverse"
+         >
+          <Grid item>
+            <Link
+              href="#"
+              variant="body2"
+              onClick={() => props.handleChange(null, 0)}
+            >
+              {"Have an account? Sign in"}
+            </Link>
+          </Grid>
+        </Grid>
       </form>
-    </Aux>
+    </div>
   );
 
 }
